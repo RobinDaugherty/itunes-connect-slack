@@ -18,12 +18,10 @@ export ITUNES_CONNECT_PASSWORD="password" # OPTIONAL The password for iTunes Con
 export APP_BUNDLE_ID="com.best.app" # The bundle ID of the app you want these scripts to check
 ```
 
-### Install node modules
+### Install dependencies
 ```bash
-sudo gem install fastlane
-npm install @slack/client@3.16.0 --save
-npm install dirty --save
-npm install moment --save
+yarn install
+bundle install
 ```
 
 ### Store your iTunes Connect password
