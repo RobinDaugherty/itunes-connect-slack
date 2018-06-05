@@ -2,7 +2,7 @@ var moment = require('moment')
 
 function postToSlack(appInfo, submissionStartDate) {
     var WebClient = require('@slack/client').WebClient;
-	var client = new WebClient(process.env.BOT_API_TOKEN);
+	var client = new WebClient(process.env.SLACK_BOT_API_TOKEN);
 
 	var message = `The status of your app *${appInfo.name}* has been changed to *${appInfo.status}*`
 	var attachment = slackAttachment(appInfo, submissionStartDate)

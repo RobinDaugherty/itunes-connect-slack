@@ -2,12 +2,17 @@ require 'Spaceship'
 require 'json'
 
 # Constants
-itc_username = ENV["itc_username"]
-bundle_id = ENV["bundle_id"]
+itc_username = ENV["ITUNES_CONNECT_USERNAME"]
+bundle_id = ENV["APP_BUNDLE_ID"]
 
-if (!itc_username || !bundle_id)
-	puts "did not find username and bundle id"
-	exit
+if !itc_username
+  puts "Error: did not find ITUNES_CONNECT_USERNAME"
+  exit
+end
+
+if !bundle_id
+  puts "Error: did not find APP_BUNDLE_ID"
+  exit
 end
 
 Spaceship::Tunes.login(itc_username)
