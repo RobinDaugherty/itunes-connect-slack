@@ -3,6 +3,7 @@ require 'json'
 
 # Constants
 itc_username = ENV["ITUNES_CONNECT_USERNAME"]
+itc_password = ENV["ITUNES_CONNECT_PASSWORD"]
 bundle_id = ENV["APP_BUNDLE_ID"]
 
 if !itc_username
@@ -10,12 +11,16 @@ if !itc_username
   exit
 end
 
+if !itc_password
+  puts "Warning: ITUNES_CONNECT_PASSWORD not set, assuming it's in your keychain"
+end
+
 if !bundle_id
   puts "Error: did not find APP_BUNDLE_ID"
   exit
 end
 
-Spaceship::Tunes.login(itc_username)
+Spaceship::Tunes.login(itc_username, itc_password)
 app = Spaceship::Tunes::Application.find(bundle_id)
 editVersionInfo = app.edit_version
 liveVersionInfo = app.live_version
